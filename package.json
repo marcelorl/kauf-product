@@ -1,0 +1,33 @@
+{
+  "name": "kauf.product",
+  "version": "1.0.0",
+  "author": "Marcelo Rizzardo Lima",
+  "license": "MIT",
+  "scripts": {
+    "lint": "semistandard \"src/*.js\" \"server.js\" --verbose | snazzy",
+    "start": "nodemon ./server.js"
+  },
+  "engines": {
+    "node": "7.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://marcelorl@github.com/marcelorl/kauf-product.git"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "semistandard": "^11.0.0",
+    "snazzy": "^7.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "path": "^0.12.7",
+    "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0",
+    "sqlite3": "^3.1.8"
+  }
+}
