@@ -1,0 +1,56 @@
+[
+  {
+    "model": "category",
+    "documents": [
+      {
+        "name": "Computers"
+      },
+      {
+        "name": "Eletronics"
+      }
+    ]
+  },
+  {
+    "model": "offer",
+    "documents": [
+      {
+        "name": "Doc1",
+        "category": "Computers",
+        "description": "testtestsetests",
+        "productName": "product name",
+        "retailerUrl": "http://test.com",
+        "productBrand": "brand",
+        "reducedPrice": {
+          "amount": 100,
+          "currencyCode": "USD"
+        },
+        "originalPrice": {
+          "amount": 120,
+          "currencyCode": "USD"
+        },
+        "productImagePointer": {
+          "itemName": "item name"
+        }
+      },
+      {
+        "name": "Doc2",
+        "category": "Computers",
+        "description": "testtestsetests2",
+        "productName": "product name2",
+        "retailerUrl": "http://test.com",
+        "productBrand": "brand2",
+        "reducedPrice": {
+          "amount": 120,
+          "currencyCode": "USD"
+        },
+        "originalPrice": {
+          "amount": 140,
+          "currencyCode": "USD"
+        },
+        "productImagePointer": {
+          "itemName": "item name"
+        }
+      }
+    ]
+  }
+]

@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "semistandard \"src/*.js\" \"server.js\" --verbose | snazzy",
-    "start": "nodemon ./server.js"
+    "start": "nodemon ./server.js",
+    "seed": "node src/seed"
   },
   "engines": {
     "node": "7.10.0"
@@ -25,9 +26,10 @@
     "compression": "^1.6.2",
     "cors": "^2.8.3",
     "express": "^4.15.2",
-    "path": "^0.12.7",
-    "sequelize": "^3.30.4",
-    "sequelize-cli": "^2.7.0",
-    "sqlite3": "^3.1.8"
+    "mongoose": "^4.9.8",
+    "mongoose-delete": "^0.3.4",
+    "mongoose-seed": "^0.3.2",
+    "mongoose-timestamp": "^0.6.0",
+    "path": "^0.12.7"
   }
 }

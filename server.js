@@ -4,6 +4,10 @@ const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const src = require('./src');
+
+src.connect();
+
 const app = express();
 
 app.use(cors());
@@ -13,7 +17,7 @@ app.use(compression());
 
 app.use('/', express.static(path.resolve(__dirname, 'public')));
 
-// app.use('/api', routes);
+app.use(src.offer);
 
 app.set('port', (3000));
 
