@@ -8,6 +8,11 @@ router.get('/offers', (req, res) => {
     .then(offers => res.send(offers));
 });
 
+router.get('/offers/:id', (req, res) => {
+  Model.find({_id: req.params.id})
+    .then(offers => res.send(offers));
+});
+
 router.post('/offers', (req, res) => {
   new Model(req.body).save(err => {
     if(err) {
