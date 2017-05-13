@@ -5,7 +5,22 @@ const router = express.Router();
 
 router.get('/offers', (req, res) => {
   Model.find()
-    .then(offers => res.send(offers));
+    .then(offers => {
+      const result = offers.map(offer => {
+        return {
+          id: offer._id,
+          properties: {
+            name: offer.name,
+            reducedPrice: offer.reducedPrice,
+            originalPrice: offer.originalPrice,
+            productImagePointer: offer.productImagePointer
+          },
+          createdAt: offer.createdAt
+        };
+      });
+
+      res.send(result);
+    });
 });
 
 router.get('/offers/:id', (req, res) => {

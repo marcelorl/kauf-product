@@ -1,13 +1,13 @@
 'use strict';
 
 (function(){
-  const baseUrl = 'http://localhost:3000/offers';
+  const baseUrl = 'http://localhost:3000';
   const bustCache = '?' + new Date().getTime();
 
-  function get(url) {
-    return new Promise(function(resolve, reject) {
+  const request = (verb, url) =>
+    new Promise(function(resolve, reject) {
       var req = new XMLHttpRequest();
-      req.open('GET', url);
+      req.open(verb, url);
 
       req.onload = function() {
         if (req.status == 200) {
@@ -24,25 +24,31 @@
 
       req.send();
     });
-  }
 
-  function listOffers () {
-    get(`${baseUrl}?${bustCache}`)
+  const deleteOffer = (id) =>
+    console.log(id);
+
+  const listOffers = () =>
+    request('GET', `${baseUrl}/offers?${bustCache}`)
       .then(res => {
         let list = '';
         const result = JSON.parse(res);
 
         for(let i = 0, size = result.length; i < size; i++) {
-          list += '<tr>';
-            list += `<td>${result[i].name}</td>`;
-            list += `<td>${result[i].description}</td>`;
-          list += '</tr>';
+          const { name, originalPrice, reducedPrice, productImagePointer } = result[i].properties;
+
+          list +=
+            `<tr>
+              <td><img src="${productImagePointer.itemName}"></td>
+              <td><a href="${baseUrl}/offer/${result[i].id}">${name}</a></td>
+              <td>${originalPrice.currencyCode} ${originalPrice.amount}</td>
+              <td>${reducedPrice.currencyCode} ${reducedPrice.amount}</td>
+              <td><button>Delete</button></td>
+            </tr>`;
         }
 
         document.getElementById('kauf-offers__list').innerHTML = list;
       });
-
-  }
 
   listOffers();
 
