@@ -27,8 +27,14 @@
       req.send();
     });
 
-  const deleteOffer = (id) =>
-    console.log(id);
+  const deleteOffer = (id) => {
+    request('DELETE', `${baseUrl}/offers/${id}?${bustCache}`)
+      .then(res => {
+        alert(res);
+        window.location.replace('http://localhost:3000');
+      });
+  };
+
 
   const listOffers = () =>
     request('GET', `${baseUrl}/offers?${bustCache}`)
@@ -47,11 +53,21 @@
               <td><a href="${baseUrl}/offer.html?id=${result[i].id}">${name}</a></td>
               <td>${originalPrice.currencyCode} ${originalPrice.amount}</td>
               <td>${reducedPrice.currencyCode} ${reducedPrice.amount}</td>
-              <td><button>Delete</button></td>
+              <td><button class="delete-button" data-id="${result[i].id}">Delete</button></td>
             </tr>`;
         }
 
           document.getElementById('kauf-offers__list').innerHTML = list;
+
+          const deleteButtons = document.querySelectorAll('.delete-button');
+
+          for(let i = 0, size = deleteButtons.length; i < size; i++) {
+            deleteButtons[i].addEventListener('click', () => {
+              const id = deleteButtons[i].getAttribute('data-id');
+
+              deleteOffer(id);
+            });
+          }
       });
 
   listOffers();
