@@ -1,9 +1,11 @@
 const express = require('express');
+const multer  = require('multer');
 const compression = require('compression');
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const upload = multer({ dest: 'public/images' });
 const src = require('./src');
 
 src.connect();

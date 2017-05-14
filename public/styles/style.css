@@ -7,6 +7,7 @@
 
 #kauf-offers__list {
   margin: 0 auto;
+  text-align: center;
 }
 
 .offer__list__image {
@@ -25,6 +26,7 @@
 }
 
 .offer__form__input label {
+  font-weight: 600;
   padding-bottom: 0.2rem;
 }
 
@@ -35,4 +37,11 @@
 
 .offer__form__group .offer__form__input {
   width: 45%;
+}
+
+.offer__form__submit {
+  float: right;
+  font-size: 1rem;
+  margin: 2rem 0;
+  width: 5rem;
 }

@@ -51,8 +51,8 @@
             `<tr>
               <td><img class="offer__list__image" src="${image}"></td>
               <td><a href="${baseUrl}/offer.html?id=${result[i].id}">${name || ''}</a></td>
-              <td>${originalPrice.currencyCode || ''} ${originalPrice.amount || ''}</td>
-              <td>${reducedPrice.currencyCode || ''} ${reducedPrice.amount || ''}</td>
+              <td>${originalPrice.currencyCode.toUpperCase() || ''} ${originalPrice.amount || ''}</td>
+              <td>${reducedPrice.currencyCode.toUpperCase() || ''} ${reducedPrice.amount || ''}</td>
               <td><button class="delete-button" data-id="${result[i].id}">Delete</button></td>
             </tr>`;
         }
