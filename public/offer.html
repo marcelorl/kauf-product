@@ -3,11 +3,65 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Kauf product - edit</title>
+    <title>Kauf - Offer</title>
+
+    <link rel="stylesheet" href="./styles/style.css">
   </head>
   <body>
+    <div class="offer__head">
+      <h1>Offer</h1>
+      <a href="index.html">< List</a>
+    </div>
 
+    <form method="post" class="offer__form">
+      <div class="offer__form__input">
+        <label for="name">Name:</label>
+        <input name="name" id="name" type="text">
+      </div>
+      <div class="offer__form__input">
+        <label for="category">Category:</label>
+        <input name="category" id="category" type="text">
+      </div>
+      <div class="offer__form__input">
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+      </div>
+      <div class="offer__form__input">
+        <label for="productName">Product Name:</label>
+        <input name="productName" id="productName" type="text">
+      </div>
+      <div class="offer__form__input">
+        <label for="retailerUrl">Retailer Url:</label>
+        <input name="retailerUrl" id="retailerUrl" type="text">
+      </div>
+      <div class="offer__form__input">
+        <label for="productBrand">Name:</label>
+        <input name="productBrand" id="productBrand" type="text">
+      </div>
+      <div class="offer__form__group">
+        <div class="offer__form__input">
+          <label for="priceCode">Price currency code:</label>
+          <input name="priceCode" id="priceCode" type="text">
+        </div>
+        <div class="offer__form__input">
+          <label for="priceAmount">Price:</label>
+          <input name="priceAmount" id="priceAmount" type="text">
+        </div>
+      </div>
+      <div class="offer__form__group">
+        <div class="offer__form__input">
+          <label for="discountCode">Discount currency code:</label>
+          <input name="discountCode" id="discountCode" type="text">
+        </div>
+        <div class="offer__form__input">
+          <label for="discountAmount">Discount:</label>
+          <input name="discountAmount" id="discountAmount" type="text">
+        </div>
+      </div>
 
-    <script type="application/javascript" src="js/index.js"></script>
+      <input type="submit" value="Save" />
+    </form>
+
+    <script type="application/javascript" src="js/form.js"></script>
   </body>
 </html>

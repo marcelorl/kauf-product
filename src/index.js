@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports = {
-  offer: require('./components/offer/controller'),
+  offerRoutes: require('./components/offer/controller'),
 
   connect: () => {
     mongoose.Promise = global.Promise;

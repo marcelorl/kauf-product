@@ -2,6 +2,8 @@
 
 (function(){
   const baseUrl = 'http://localhost:3000';
+  const imagePlaceholder = './images/placeholder.png';
+
   const bustCache = '?' + new Date().getTime();
 
   const request = (verb, url) =>
@@ -37,10 +39,12 @@
         for(let i = 0, size = result.length; i < size; i++) {
           const { name, originalPrice, reducedPrice, productImagePointer } = result[i].properties;
 
+          const image = productImagePointer.itemName || imagePlaceholder;
+
           list +=
             `<tr>
-              <td><img src="${productImagePointer.itemName}"></td>
-              <td><a href="${baseUrl}/offer/${result[i].id}">${name}</a></td>
+              <td><img class="offer__list__image" src="${image}"></td>
+              <td><a href="${baseUrl}/offer.html?id=${result[i].id}">${name}</a></td>
               <td>${originalPrice.currencyCode} ${originalPrice.amount}</td>
               <td>${reducedPrice.currencyCode} ${reducedPrice.amount}</td>
               <td><button>Delete</button></td>

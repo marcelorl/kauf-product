@@ -17,7 +17,7 @@ app.use(compression());
 
 app.use('/', express.static(path.resolve(__dirname, 'public')));
 
-app.use(src.offer);
+app.use(src.offerRoutes);
 
 app.set('port', (3000));
 

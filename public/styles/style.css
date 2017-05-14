@@ -1,0 +1,38 @@
+.offer__head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+
+#kauf-offers__list {
+  margin: 0 auto;
+}
+
+.offer__list__image {
+  width: 5rem;
+}
+
+.offer__form {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.offer__form__input {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.offer__form__input label {
+  padding-bottom: 0.2rem;
+}
+
+.offer__form__group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.offer__form__group .offer__form__input {
+  width: 45%;
+}
