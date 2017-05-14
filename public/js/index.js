@@ -39,7 +39,7 @@
   const listOffers = () =>
     request('GET', `${baseUrl}/offers?${bustCache}`)
       .then(res => {
-        let list = '';
+        let list = '<tbody>';
         const result = JSON.parse(res);
 
         for(let i = 0, size = result.length; i < size; i++) {
@@ -50,24 +50,26 @@
           list +=
             `<tr>
               <td><img class="offer__list__image" src="${image}"></td>
-              <td><a href="${baseUrl}/offer.html?id=${result[i].id}">${name}</a></td>
-              <td>${originalPrice.currencyCode} ${originalPrice.amount}</td>
-              <td>${reducedPrice.currencyCode} ${reducedPrice.amount}</td>
+              <td><a href="${baseUrl}/offer.html?id=${result[i].id}">${name || ''}</a></td>
+              <td>${originalPrice.currencyCode || ''} ${originalPrice.amount || ''}</td>
+              <td>${reducedPrice.currencyCode || ''} ${reducedPrice.amount || ''}</td>
               <td><button class="delete-button" data-id="${result[i].id}">Delete</button></td>
             </tr>`;
         }
 
-          document.getElementById('kauf-offers__list').innerHTML = list;
+        list += '</tbody>';
 
-          const deleteButtons = document.querySelectorAll('.delete-button');
+        document.getElementById('kauf-offers__list').insertAdjacentHTML('beforeend', list);
 
-          for(let i = 0, size = deleteButtons.length; i < size; i++) {
-            deleteButtons[i].addEventListener('click', () => {
-              const id = deleteButtons[i].getAttribute('data-id');
+        const deleteButtons = document.querySelectorAll('.delete-button');
 
-              deleteOffer(id);
-            });
-          }
+        for(let i = 0, size = deleteButtons.length; i < size; i++) {
+          deleteButtons[i].addEventListener('click', () => {
+            const id = deleteButtons[i].getAttribute('data-id');
+
+            deleteOffer(id);
+          });
+        }
       });
 
   listOffers();
