@@ -8,7 +8,7 @@
 
   const request = (verb, url) =>
     new Promise(function(resolve, reject) {
-      var req = new XMLHttpRequest();
+      let req = new XMLHttpRequest();
       req.open(verb, url);
 
       req.onload = function() {
@@ -51,7 +51,7 @@
             </tr>`;
         }
 
-        document.getElementById('kauf-offers__list').innerHTML = list;
+          document.getElementById('kauf-offers__list').innerHTML = list;
       });
 
   listOffers();

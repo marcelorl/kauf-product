@@ -29,7 +29,20 @@ router.get('/offers/:id', (req, res) => {
 });
 
 router.post('/offers', (req, res) => {
-  new Model(req.body).save(err => {
+  const body = Object.assign(
+    req.body, {
+      originalPrice: {
+        currencyCode: req.body.priceCode,
+        amount: req.body.priceAmount
+      },
+      reducedPrice: {
+        currencyCode: req.body.discountCode,
+        amount: req.body.discountAmount
+      }
+    }
+  );
+
+  new Model(body).save(err => {
     if(err) {
       return res.send(err);
     }
