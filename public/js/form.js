@@ -43,13 +43,6 @@
     e.preventDefault();
 
     const formData = new FormData(offerForm);
-    let formValues = '';
-
-    for (let value of formData.entries()) {
-      if(value) {
-        formValues += `${value[0]}=${value[1]}&`;
-      }
-    }
 
     request('POST', `${baseUrl}/offers`, formData)
       .then(res => {
@@ -84,15 +77,8 @@
     e.preventDefault();
 
     const formData = new FormData(offerForm);
-    let formValues = '';
 
-    for (let [key, value] of formData.entries()) {
-      if(value) {
-        formValues += `${key}=${value}&`;
-      }
-    }
-
-    request('PUT', `${baseUrl}/offers/${id}`, formValues)
+    request('PUT', `${baseUrl}/offers/${id}`, formData)
       .then(res => {
         alert(res);
         window.location.replace('http://localhost:3000');
