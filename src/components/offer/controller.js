@@ -1,7 +1,46 @@
 const express = require('express');
+const multer  = require('multer');
+
 const Model = require('./model');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+});
+
+const upload = multer({ storage: storage });
 
 const router = express.Router();
+
+const setBody = (reqBody, reqFile) => {
+  let image = {};
+  if(reqFile) {
+    image = {
+      productImagePointer: {
+        itemName: reqFile.originalname
+      }
+    };
+  }
+
+  const body = Object.assign(
+    reqBody, {
+      originalPrice: {
+        currencyCode: reqBody.priceCode || '',
+        amount: reqBody.priceAmount || 0
+      },
+      reducedPrice: {
+        currencyCode: reqBody.discountCode || '',
+        amount: reqBody.discountAmount || 0
+      }
+    },
+    image
+  );
+
+  return body;
+};
 
 router.get('/offers', (req, res) => {
   Model.find()
@@ -28,19 +67,8 @@ router.get('/offers/:id', (req, res) => {
     .then(offers => res.send(offers));
 });
 
-router.post('/offers', (req, res) => {
-  const body = Object.assign(
-    req.body, {
-      originalPrice: {
-        currencyCode: req.body.priceCode,
-        amount: req.body.priceAmount
-      },
-      reducedPrice: {
-        currencyCode: req.body.discountCode,
-        amount: req.body.discountAmount
-      }
-    }
-  );
+router.post('/offers', upload.single('productImagePointer'), (req, res) => {
+  const body = setBody(req.body, req.file);
 
   new Model(body).save(err => {
     if(err) {
@@ -50,8 +78,10 @@ router.post('/offers', (req, res) => {
   });
 });
 
-router.put('/offers/:id', (req, res) => {
-  Model.update({_id: req.params.id}, req.body, err => {
+router.put('/offers/:id', upload.single('productImagePointer'), (req, res) => {
+  const body = setBody(req.body, req.file);
+
+  Model.update({_id: req.params.id}, body, err => {
     if(err) {
       return res.send(err);
     }

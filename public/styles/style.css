@@ -45,3 +45,7 @@
   margin: 2rem 0;
   width: 5rem;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

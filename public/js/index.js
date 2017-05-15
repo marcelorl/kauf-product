@@ -2,7 +2,7 @@
 
 (function(){
   const baseUrl = 'http://localhost:3000';
-  const imagePlaceholder = './images/placeholder.png';
+  const imagePlaceholder = 'placeholder.png';
 
   const bustCache = '?' + new Date().getTime();
 
@@ -49,10 +49,10 @@
 
           list +=
             `<tr>
-              <td><img class="offer__list__image" src="${image}"></td>
+              <td><img class="offer__list__image" src="./images/${image}"></td>
               <td><a href="${baseUrl}/offer.html?id=${result[i].id}">${name || ''}</a></td>
-              <td>${originalPrice.currencyCode.toUpperCase() || ''} ${originalPrice.amount || ''}</td>
-              <td>${reducedPrice.currencyCode.toUpperCase() || ''} ${reducedPrice.amount || ''}</td>
+              <td class="uppercase">${originalPrice.currencyCode || ''} ${originalPrice.amount || ''}</td>
+              <td class="uppercase">${reducedPrice.currencyCode || ''} ${reducedPrice.amount || ''}</td>
               <td><button class="delete-button" data-id="${result[i].id}">Delete</button></td>
             </tr>`;
         }

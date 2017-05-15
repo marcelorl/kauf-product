@@ -22,9 +22,6 @@
     new Promise(function(resolve, reject) {
       let req = new XMLHttpRequest();
       req.open(verb, url);
-      if(verb === 'POST' || verb === 'PUT') {
-        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      }
 
       req.onload = function() {
         if (req.status == 200) {
@@ -54,7 +51,7 @@
       }
     }
 
-    request('POST', `${baseUrl}/offers`, formValues)
+    request('POST', `${baseUrl}/offers`, formData)
       .then(res => {
         alert(res);
         window.location.replace('http://localhost:3000');
@@ -68,7 +65,7 @@
 
         for (var key in result) {
           const element = offerForm.querySelector(`#${key}`);
-          if (element) {
+          if (element && key !== 'productImagePointer') {
             element.value = result[key];
           }
         }
@@ -77,6 +74,9 @@
         offerForm.querySelector('#priceAmount').value = result.originalPrice.amount;
         offerForm.querySelector('#discountCode').value = result.reducedPrice.currencyCode;
         offerForm.querySelector('#discountAmount').value = result.reducedPrice.amount;
+
+        document.getElementById('uploaded-image').innerHTML =
+          `<img class="offer__list__image" src="./images/${result.productImagePointer.itemName}" />`;
       });
   };
 
