@@ -1,6 +1,8 @@
 kauf product
 ===========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/marcelorl/kauf-product.svg)](https://greenkeeper.io/)
+
 > product crud written with vanilla js.
 
 ## Installation
